@@ -1,6 +1,6 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QPushButton, QLabel, QVBoxLayout, QWidget
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout, QButtonGroup, QPushButton, QTextEdit
 from PyQt6.QtGui import QFont
 
 app = QApplication(sys.argv)
@@ -21,18 +21,46 @@ label.setStyleSheet("""
     background-color: yellow; /* Цвет фона */
     border: 2px solid black;  /* Черная рамка вокруг текста */
 """)
+layout = QVBoxLayout()
 
-layout = QHBoxLayout()
 
-label1 = QLabel("Label 1")
-label2 = QLabel("Label 2")
-label3 = QLabel("Label 3")
+def on_button_click():
+    def get_text():
+        print(text.toPlainText())
 
-layout.addWidget(label1)
-layout.addWidget(label2)
-layout.addWidget(label3)
+    fram=QWidget()
+    fram.setWindowTitle("Dev")
+    fram.show()
+    fram.setGeometry(100, 200, 300, 400)
+    print("ffffff____")
+    text=QTextEdit()
+    text.setPlaceholderText("GHBBFB")
+    layout.addWidget(text)
+    window.setLayout(layout)
+    button=QPushButton("Get")
+    button.clicked.connect(get_text)
+    layout.addWidget(button)
 
-window.setLayout(layout)
+
+
+# layout = QHBoxLayout()
+
+# label1 = QLabel("Label 1")
+# label2 = QLabel("Label 2")
+# label3 = QLabel("Label 3")
+
+# layout.addWidget(label1)
+# layout.addWidget(label2)
+# layout.addWidget(label3)
+
+# Создание кнопки
+button = QPushButton("Click Me", window)
+button.setGeometry(100, 100, 200, 40)
+
+# Связь сигнала с функцией
+button.clicked.connect(on_button_click)
+
+# window.setLayout(layout)
 
 window.show()
 
